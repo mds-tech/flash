@@ -1,0 +1,23 @@
+{
+  "name": "mds/flash",
+  "description": "Easy Laravel flash notifications, that allow for multiple messages",
+  "license": "GPL-3.0",
+  "require": {
+    "illuminate/support": "^5.0",
+    "illuminate/session": "^5.0",
+    "php": ">=5.5"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "MDS Developers",
+      "email": "developers@mdstech.co.za"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Mds\\Flash": "src"
+    }
+  },
+  "minimum-stability": "stable"
+}
