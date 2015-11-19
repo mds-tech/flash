@@ -15,8 +15,8 @@
     }
   ],
   "autoload": {
-    "psr-0": {
-      "Mds\\Flash": "src"
+    "psr-4": {
+      "Mds\\Flash\\": "src"
     }
   },
   "minimum-stability": "stable"
