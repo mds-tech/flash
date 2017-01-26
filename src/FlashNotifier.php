@@ -58,7 +58,11 @@ class FlashNotifier
     public function message($message, $level = 'info')
     {
         $notifications = $this->session->get('flash_notifications', []);
-        $notifications[] = ['message' => $message, 'level' => $level];
-        $this->session->flash('flash_notifications', $notifications);
+        if(!empty($notifications)) { // remove duplicate messages
+            $notifications[] = ['message' => $message, 'level' => $level];
+            $this->session->flash('flash_notifications', array_map("unserialize", array_unique(array_map("serialize", $notifications))));
+        } else {
+            $this->session->flash('flash_notifications', $notifications);
+        }
     }
 }
