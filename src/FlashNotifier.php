@@ -62,6 +62,7 @@ class FlashNotifier
             $notifications[] = ['message' => $message, 'level' => $level];
             $this->session->flash('flash_notifications', array_map("unserialize", array_unique(array_map("serialize", $notifications))));
         } else {
+            $notifications[] = ['message' => $message, 'level' => $level];
             $this->session->flash('flash_notifications', $notifications);
         }
     }
