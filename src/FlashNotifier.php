@@ -57,6 +57,7 @@ class FlashNotifier
      */
     public function message($message, $level = 'info')
     {
+        $this->session->ageFlashData();
         $notifications = $this->session->get('flash_notifications', []);
         $notifications[] = ['message' => $message, 'level' => $level];
         $this->session->flash('flash_notifications', $notifications);
