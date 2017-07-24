@@ -62,4 +62,21 @@ class FlashNotifier
         $notifications[sha1($message.$level)] = ['message' => $message, 'level' => $level];
         $this->session->flash('flash_notifications', $notifications);
     }
+
+    /**
+     * @param array $messages
+     */
+    public function manyMessages(array $messages)
+    {
+        $notifications = $this->session->get('flash_notifications', []);
+        $this->session->ageFlashData();
+
+	    foreach ($messages as $level => $message) {
+	    	if(is_numeric($level)) {
+	    		$level = 'info';
+		    }
+	        $notifications[sha1($message.$level)] = ['message' => $message, 'level' => $level];
+	        $this->session->flash('flash_notifications', $notifications);
+        }
+    }
 }
