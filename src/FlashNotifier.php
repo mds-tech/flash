@@ -79,4 +79,20 @@ class FlashNotifier
 	        $this->session->flash('flash_notifications', $notifications);
         }
     }
+
+	/**
+	 * Extend the aged flash data one `\Request` further
+	 * Equivalent to Laravel's `\Session::reflash()` but scoped to only `\Flash` data
+	 */
+	public function renew()
+	{
+		if($this->session->has('flash_notifications')) {
+			$notifications = [];
+			foreach ($this->session->get('flash_notifications') as $notification) {
+				$notifications[$notification['level']] = $notification['message'];
+			};
+
+			$this->manyMessages($notifications);
+		}
+	}
 }
